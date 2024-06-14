@@ -1,0 +1,101 @@
+body {
+    background-color: #1c2841;
+}
+
+
+
+h1 {
+    color: white;
+}
+
+
+
+.meme-gen-form {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    gap: 20px;
+}
+
+
+
+input {
+    color: black;
+    border: 2px solid;
+    border-radius: 10px;
+    border-color: white;
+    background-color: #1c2841;
+}
+
+
+
+input:hover{
+    box-shadow: 0 5px 50px 0 white inset, 0 5px 50px 0 white;
+}
+
+
+
+::placeholder {
+    color: white;
+}
+
+
+
+.add-meme {
+    color: white;
+    width: 5%;
+    height: 10%;
+    border: 2px solid;
+    border-radius: 15%;
+    font-weight: bold;
+    background: #1c2841;
+    cursor: pointer;
+    
+}
+
+
+
+.add-meme:hover{
+    box-shadow: 0 5px 50px 0 white inset, 0 5px 50px 0 white;
+}
+
+
+
+.delete-meme{
+    color: red;
+}
+
+
+
+.top {
+    color: black;
+    font-size: 30px;
+    font-weight: 900;
+    position: relative;
+    top: 50px;
+}
+
+
+
+.bottom {
+    color: black;
+    font-size: 30px;
+    font-weight: 900;
+    position: relative;
+    bottom: 50px;
+}
+
+
+
+
+.image {
+    color: black;
+    width: 50%;
+    height: 50%;
+}
+
+
+
+#meme {
+    text-align: center;
+}
