@@ -223,21 +223,21 @@
     }
 
     .form-container {
-    padding-top: 0.5rem;
-    margin-bottom: 15rem;
+    padding-top: 1rem;
+    margin-bottom: 10rem;
     }
 
     .meme-gen-form input {
     width: 90%;
     max-width: 300px;
-    margin: 20px auto;
+    margin: 10px auto;
     display: block;
     }
 
     .add-meme {
     width: 80%;
     max-width: 100px;
-    margin: 25px auto;
+    margin: 10px auto;
     display: block;
     }
 
