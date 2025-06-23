@@ -1,119 +1,252 @@
-body {
-    background-color: #1c2841;
+    html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
     flex-direction: column;
-}
+    }
 
+    #bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; 
+    z-index: -1;
+    }
 
+    .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 0;
+    }
 
-h1 {
+    .main-heading {
+    position: absolute;
+    top: 2rem;            
+    left: 50%;              
+    transform: translateX(-50%); 
     color: white;
-}
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow:
+    0 0 10px #00ffff,
+    0 0 20px #00ffff,
+    0 0 30px #00ffff;
+    z-index: 1;
+    }
 
+    .form-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 3rem 2rem;
+    z-index: 1;
+    }
 
-/* New container to control form alignment */
-.form-container {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 5rem; /* adjust this as needed */
-}
-
-
-.meme-gen-form {
+    .meme-gen-form {
     display: flex;
     flex-direction: column;
-    width: 75%;
-    gap: 20px;
-    
-}
+    gap: 1rem;
+    width: 400px;
+    z-index: 1;
+    }
 
-
-
-input {
-    color: black;
-    border: 2px solid;
+    input {
+    color: white;
+    background-color: transparent;
+    border: 2px solid #00ffff;
     border-radius: 10px;
-    border-color: white;
-    background-color: #1c2841;
-    height: 2rem;
-    width: 50rem;
-}
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    box-shadow: 0 0 8px #00ffff;
+    }
 
-
-
-input:hover{
-    box-shadow: 0 5px 50px 0 white inset, 0 5px 50px 0 white;
-}
-
-
-
-::placeholder {
+    input:focus {
+    outline: none;
+    border: 2px solid #00ffff;  
+    box-shadow: 0 0 12px #00ffff;
+    background-color: transparent !important;
     color: white;
-}
+    }
 
+    input:-webkit-autofill,
+    input:-webkit-autofill:focus {
+    background-color: transparent !important;
+    color: white !important;
+    -webkit-text-fill-color: white !important;
+    transition: background-color 9999s ease-in-out 0s;
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    }
 
-
-.add-meme {
+    ::placeholder {
     color: white;
-    width: 5%;
-    height: 25%;
-    border: 2px solid;
-    border-radius: 15%;
-    font-weight: bold;
-    background: #1c2841;
-    cursor: pointer;
-    
-}
+    }
 
-
-
-.add-meme:hover{
-    box-shadow: 0 5px 50px 0 white inset, 0 5px 50px 0 white;
-}
-
-
-
-.delete-meme{
-    color: red;
-}
-
-
-
-.top {
-    color: black;
-    font-size: 30px;
-    font-weight: 900;
-    position: relative;
-    top: 50px;
-}
-
-
-
-.bottom {
-    color: black;
-    font-size: 30px;
-    font-weight: 900;
-    position: relative;
-    bottom: 50px;
-}
-
-
-
-
-.image {
-    color: black;
-    width: 50%;
-    height: 50%;
-}
-
-
-
-#meme {
+    .meme-container {
+    margin-bottom: 100px;
     text-align: center;
+    position: relative;
+    display: inline-block;
+    }
+
+    .meme-container img {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    height: auto;
+    display: block;
+    margin-top: 30px;
+    border-radius: 10px;
+    }
+
+    .add-meme {
+    background-color: #00ffff;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    width: 90px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00ffff;
+    transition: all 0.3s ease-in-out;
+    margin-top: 20px;
+    }
+
+    .add-meme:hover {
+    box-shadow: 0 0 20px #00ffff; 
+    background-color: #00ffff;
+    color: black;
+    transform: scale(1.05);
+    }
+
+    .delete-meme {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border: none;
+    height: 50px;
+    width: 90px;
+    padding: 0.5rem 1rem;
+    margin-top: 15px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 0 10px red;
+    transition: all 0.3s ease-in-out;
+    }
+    
+    .delete-meme:hover {
+    background-color: red;
+    box-shadow: 0 0 20px red; 
+    transform: scale(1.05);      
+    color: white;
+    }
+
+    .download-meme {
+    transform: translateY(-5px);
+    margin-left: 2rem;
+    padding: 10px 20px;
+    border: 2px solid #00ffff; /* glowing aqua */
+    border-radius: 8px;
+    background-color: transparent;
+    color: #00ffff;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    text-shadow: 0 0 5px #00ffff;
+    transition: all 0.3s ease;
+    }
+
+    .download-meme:hover {
+    background-color: #00ffff;
+    color: black;
+    box-shadow: 0 0 15px #00ffff;
+    }
+
+
+    .top, .bottom {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: black;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px white;
+    z-index: 2;
+    width: 90%;
+    text-align: center;
+    padding: 0.5rem;
+    }
+
+    .top {
+    top: 2rem;
+    
+    }
+
+    .bottom {
+    bottom: 4rem;
+    }
+
+    .image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+    }
+
+    #meme {
+    text-align: center;
+    }
+
+    @media (max-width: 600px) {
+
+    html, body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin: 0;
+    padding: 0;
+    }
+
+    .form-container {
+    padding-top: 0.5rem;
+    margin-bottom: 15rem;
+    }
+
+    .meme-gen-form input {
+    width: 90%;
+    max-width: 300px;
+    margin: 20px auto;
+    display: block;
+    }
+
+    .add-meme {
+    width: 80%;
+    max-width: 100px;
+    margin: 25px auto;
+    display: block;
+    }
+
+    .meme-container {
+    width: 90%;
+    margin-bottom: 25rem;
+    }
+
+    .top, .bottom {
+    font-size: 1.5rem;
+    }
 }
