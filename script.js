@@ -71,12 +71,21 @@ function handleFormSubmit(event) {
   // Add click event to download meme as image
   downloadBtn.addEventListener("click", () => {
   html2canvas(memeContainer).then(canvas => {
-  const link = document.createElement("a");
-  link.download = "meme.png";
-  link.href = canvas.toDataURL("image/png");
-  link.click();
+    const imgData = canvas.toDataURL("image/png");
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+    if (isIOS) {
+      const newTab = window.open();
+      newTab.document.body.innerHTML = `<img src="${imgData}" style="width:100%;">`;
+      alert("📱 Tap and hold the image to save it on iPhone.");
+    } else {
+      const link = document.createElement("a");
+      link.download = "meme.png";
+      link.href = imgData;
+      link.click();
+    }
   });
-  });
+});
 
   // Append download button to meme container
   memeContainer.appendChild(downloadBtn);
