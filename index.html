@@ -7,24 +7,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <video autoplay muted loop playsinline id="bg-video">
-        <source src="videos/glowing-stars.mp4" type="video/mp4">
-    </video>
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="videos/glowing-stars.mp4" type="video/mp4">
+  </video>
 
-    <div class="overlay"></div>
+  <div class="overlay"></div>
 
+  <!-- Wrapper around heading, form, and meme -->
+  <div class="content-wrapper">
     <h1 class="main-heading">Meme Generator</h1>
 
     <div class="form-container">
-    <form class="meme-gen-form">
+      <form class="meme-gen-form">
         <input type="url" id="image" placeholder="Enter image-url" required>
         <input type="text" id="top-text" placeholder="Enter top text for your image">
         <input type="text" id="bottom-text" placeholder="Enter bottom text for your image">
         <button type="submit" class="add-meme">Add Meme</button>
-    </form>
+      </form>
     </div>
+
     <div id="meme"></div>
-    <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 </body>
+
 </html>

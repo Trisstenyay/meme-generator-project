@@ -12,6 +12,15 @@
     flex-direction: column;
     }
 
+    .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding-top: 3rem;
+    }
+
     #bg-video {
     position: fixed;
     top: 0;
@@ -33,10 +42,8 @@
     }
 
     .main-heading {
-    position: absolute;
-    top: 2rem;            
-    left: 50%;              
-    transform: translateX(-50%); 
+    margin-top: 2rem;
+    text-align: center;             
     color: white;
     font-size: 3rem;
     font-weight: bold;
@@ -51,7 +58,8 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 3rem 2rem;
+    padding: 1rem 2rem;
+    margin-bottom: 1rem;
     z-index: 1;
     }
 
@@ -97,7 +105,6 @@
     }
 
     .meme-container {
-    margin-bottom: 100px;
     text-align: center;
     position: relative;
     display: inline-block;
@@ -109,7 +116,6 @@
     object-fit: contain;
     height: auto;
     display: block;
-    margin-top: 30px;
     border-radius: 10px;
     }
 
@@ -211,7 +217,13 @@
 
     #meme {
     text-align: center;
+    margin-top: 1rem;  /* Make sure this is not 0 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     }
+
+
 
     @media (max-width: 600px) {
 
@@ -222,15 +234,26 @@
     padding: 0;
     }
 
+    .main-heading {
+    font-size: 2rem;
+    margin-top: 1rem;
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
     .form-container {
     padding-top: 1rem;
-    margin-bottom: 10rem;
+    margin-bottom: 1rem;
     }
 
     .meme-gen-form input {
     width: 90%;
     max-width: 300px;
     margin: 10px auto;
+    margin-bottom: 2rem;
     display: block;
     }
 
@@ -243,10 +266,28 @@
 
     .meme-container {
     width: 90%;
-    margin-bottom: 25rem;
+    margin: -3rem auto 3rem auto;
     }
 
     .top, .bottom {
     font-size: 1.5rem;
+    padding: 0.5rem;
+    text-align: center;
     }
+
+    .top {
+    margin-top: -2rem;
+    }
+
+    .delete-btn,
+    .download-btn {
+    margin: 10px auto;
+    display: block;
+    width: 80%;
+    max-width: 150px;
+    }
+
+    #meme {
+    margin-top: 2rem; 
+  }
 }
