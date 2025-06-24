@@ -48,7 +48,6 @@ function handleFormSubmit(event) {
     memeContainer.appendChild(bottom);
     }   
 
-
   // Create a delete button so the user can remove the meme
   const deleteBtn = document.createElement("button");
   deleteBtn.innerText = "Delete Meme";
@@ -60,36 +59,52 @@ function handleFormSubmit(event) {
     memeForm.style.display = "block";      // Show the form again so the user can create a new meme
   });
 
-  // Add the delete button to the meme container
-  memeContainer.appendChild(deleteBtn);
 
   // Create a download button
   const downloadBtn = document.createElement("button");
   downloadBtn.innerText = "Download Meme";
   downloadBtn.classList.add("download-meme");
 
-  // Add click event to download meme as image
   downloadBtn.addEventListener("click", () => {
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+  let newTab;
+  if (isIOS) {
+    // Open the tab IMMEDIATELY on click, before async starts
+    newTab = window.open();
+  }
+
   html2canvas(memeContainer).then(canvas => {
     const imgData = canvas.toDataURL("image/png");
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
     if (isIOS) {
-      const newTab = window.open();
-      newTab.document.body.innerHTML = `<img src="${imgData}" style="width:100%;">`;
-      alert("📱 Tap and hold the image to save it on iPhone.");
+      if (newTab) {
+        newTab.document.body.style.margin = "0";
+        newTab.document.body.style.background = "#000";
+        newTab.document.body.innerHTML = `
+          <img src="${imgData}" style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto;" />
+          <p style="color:white; text-align:center;">👆 Tap and hold the image to save it.</p>
+        `;
+      } else {
+        alert("⚠️ Please allow popups to download the meme on iPhone.");
+      }
     } else {
       const link = document.createElement("a");
       link.download = "meme.png";
       link.href = imgData;
+      link.target = "_self";
+      document.body.appendChild(link);
       link.click();
+      document.body.removeChild(link);
+
+      alert("✅ Meme downloaded successfully!");
     }
   });
 });
 
-  // Append download button to meme container
+  // Append both buttons LAST so they appear below the image
+  memeContainer.appendChild(deleteBtn);
   memeContainer.appendChild(downloadBtn);
-
 
   // Finally, put the whole meme container onto the page inside the main #meme div
   meme.appendChild(memeContainer);

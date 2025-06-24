@@ -171,7 +171,6 @@
     background-color: transparent;
     color: #00ffff;
     font-weight: bold;
-    font-size: 16px;
     cursor: pointer;
     text-shadow: 0 0 5px #00ffff;
     transition: all 0.3s ease;
@@ -196,6 +195,7 @@
     width: 90%;
     text-align: center;
     padding: 0.5rem;
+    pointer-events: none;
     }
 
     .top {
@@ -226,76 +226,65 @@
 
 
     @media (max-width: 600px) {
-
-    html, body {
-    overflow-x: hidden;
-    overflow-y: auto;
-    margin: 0;
-    padding: 0;
-    }
-
-    .main-heading {
-    font-size: 2rem;
-    margin-top: 1rem;
-    text-align: center;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    }
-
-    .form-container {
-    padding-top: 1rem;
-    margin-bottom: 1rem;
-    }
-
+    
     .meme-gen-form input {
-    width: 90%;
-    max-width: 300px;
-    margin: 10px auto;
-    margin-bottom: 2rem;
-    display: block;
+    width: 85%;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    text-align: center;
     }
 
     .add-meme {
-    width: 80%;
-    max-width: 100px;
-    margin: 10px auto;
-    display: block;
+    width: 7rem;
+    height: 3rem;
+    margin-left: 10rem;
+    font-size: 16px;
     }
 
     .meme-container {
     width: 90%;
-    margin: -3rem auto 3rem auto;
+    max-width: 100%;
+    margin: 2rem auto;
+    padding-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    }
+
+    .meme-container img,
+    .image {
+    width: 100%;
+    max-width: 100%;
+    max-height: 60vh;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
     }
 
     .top, .bottom {
     font-size: 1.5rem;
     padding: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
     text-align: center;
     }
 
     .top {
-    margin-top: -2rem;
+    top: 0rem;
     }
 
-    .delete-btn,
-    .download-btn {
-    margin: 10px auto;
-    display: block;
-    width: 80%;
-    max-width: 150px;
+    .bottom {
+    bottom: 7rem;
     }
 
-    .download-btn {
-        margin-top: 1.5rem;
+    .delete-meme,
+    .download-meme {
+    width: 120px;
+    margin: 10px 5px;
+    font-size: 1rem;
     }
 
-    .delete-btn {
-    margin-bottom: 0.5rem;
-    }
-
-    #meme {
-    margin-top: 2rem; 
-  }
 }
