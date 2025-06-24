@@ -287,6 +287,14 @@
     max-width: 150px;
     }
 
+    .download-btn {
+        margin-top: 1.5rem;
+    }
+
+    .delete-btn {
+    margin-bottom: 0.5rem;
+    }
+
     #meme {
     margin-top: 2rem; 
   }
