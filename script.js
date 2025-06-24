@@ -32,6 +32,7 @@ function handleFormSubmit(event) {
   top.innerText = topTextValue;
   bottom.innerText = bottomTextValue;
   memeImage.src = imgUrl;
+  memeImage.crossOrigin = "anonymous";
 
   // Apply the CSS classes to style the top and bottom text
   top.classList.add("top");
@@ -70,8 +71,8 @@ function handleFormSubmit(event) {
 
   let newTab;
   if (isIOS) {
-    // Open the tab IMMEDIATELY on click, before async starts
-    newTab = window.open();
+    // Must specify "about:blank" to avoid being blocked
+    newTab = window.open("about:blank", "_blank");
   }
 
   html2canvas(memeContainer).then(canvas => {
@@ -79,16 +80,21 @@ function handleFormSubmit(event) {
 
     if (isIOS) {
       if (newTab) {
-        newTab.document.body.style.margin = "0";
-        newTab.document.body.style.background = "#000";
-        newTab.document.body.innerHTML = `
-          <img src="${imgData}" style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto;" />
-          <p style="color:white; text-align:center;">👆 Tap and hold the image to save it.</p>
-        `;
+        newTab.document.write(`
+          <html>
+            <head><title>Save Meme</title></head>
+            <body style="margin:0; background-color: black; text-align:center;">
+              <img src="${imgData}" style="width:100%; height:auto; display:block; margin:0 auto;" />
+              <p style="color:white; font-size:3rem;">👆Tap and hold the image to save it to your iPhone.</p>
+            </body>
+          </html>
+        `);
+        newTab.document.close(); // Required for iOS Safari
       } else {
-        alert("⚠️ Please allow popups to download the meme on iPhone.");
+        alert("Please allow pop-ups to save the meme.");
       }
     } else {
+      // Desktop: trigger actual download
       const link = document.createElement("a");
       link.download = "meme.png";
       link.href = imgData;
@@ -96,11 +102,11 @@ function handleFormSubmit(event) {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-
       alert("✅ Meme downloaded successfully!");
     }
   });
 });
+
 
   // Create a container to hold the buttons
   const buttonWrapper = document.createElement("div");
