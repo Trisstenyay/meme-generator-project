@@ -166,6 +166,7 @@
     transform: translateY(-5px);
     margin-left: 2rem;
     padding: 10px 20px;
+    height: 40px;
     border: 2px solid #00ffff; /* glowing aqua */
     border-radius: 8px;
     background-color: transparent;
@@ -199,7 +200,7 @@
     }
 
     .top {
-    top: 2rem;
+    top: 0rem;
     
     }
 
@@ -217,7 +218,7 @@
 
     #meme {
     text-align: center;
-    margin-top: 1rem;  /* Make sure this is not 0 */
+    margin-top: -3rem; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -263,6 +264,10 @@
     border-radius: 10px;
     }
 
+    #meme {
+    margin-top: -4rem;
+    }
+
     .top, .bottom {
     font-size: 1.5rem;
     padding: 0.5rem;
@@ -277,21 +282,18 @@
     }
 
     .bottom {
-    bottom: 7rem;
+    bottom: 10.5rem;
     }
 
-    .delete-meme {
-    width: 120px;
-    height: 3.5rem;
-    margin: 10px 5px;
-    font-size: 1rem;
+    .meme-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
     }
 
-    .download-meme {
-    width: 120px;
-    height: 3.5rem;
-    margin: 10px 5px;
-    font-size: 1rem;
+    .meme-buttons button {
+    margin: 0.5rem 0;
     }
 
 }

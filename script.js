@@ -102,9 +102,17 @@ function handleFormSubmit(event) {
   });
 });
 
-  // Append both buttons LAST so they appear below the image
-  memeContainer.appendChild(deleteBtn);
-  memeContainer.appendChild(downloadBtn);
+  // Create a container to hold the buttons
+  const buttonWrapper = document.createElement("div");
+  buttonWrapper.classList.add("meme-buttons");
+
+  // Add both buttons inside the wrapper
+  buttonWrapper.appendChild(deleteBtn);
+  buttonWrapper.appendChild(downloadBtn);
+
+  // Then add the wrapper to the memeContainer
+  memeContainer.appendChild(buttonWrapper);
+
 
   // Finally, put the whole meme container onto the page inside the main #meme div
   meme.appendChild(memeContainer);
